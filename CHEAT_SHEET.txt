@@ -1,0 +1,53 @@
+═══════════════════════════════════════════════════════════════
+  KAFKA QUICK START - COPY & PASTE THESE COMMANDS
+═══════════════════════════════════════════════════════════════
+
+✅ SCRIPT FIXED! Ready to use.
+
+1. Open PowerShell as Administrator
+
+2. Run these commands:
+
+   cd C:\Users\Zeelan\Librarian
+   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+   .\START-KAFKA.ps1
+
+3. Wait for "KAFKA IS READY!" message (may take 30-60 seconds)
+
+4. Verify Kafka is running:
+
+   netstat -ano | findstr "9092"
+
+   (Should show LISTENING)
+
+5. Run your app:
+
+   cd C:\Users\Zeelan\Librarian
+   mvn spring-boot:run
+
+═══════════════════════════════════════════════════════════════
+
+DONE! Your app will now connect to Kafka successfully.
+
+No more "Connection to node -1" errors!
+
+═══════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+
+If script doesn't work, manually start Kafka:
+
+Window 1:
+  cd "$env:USERPROFILE\kafka_direct\kafka_2.13-3.6.0"
+  .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+Window 2 (wait 5 seconds):
+  cd "$env:USERPROFILE\kafka_direct\kafka_2.13-3.6.0"
+  .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+Window 3 (wait 10 seconds):
+  cd C:\Users\Zeelan\Librarian
+  mvn spring-boot:run
+
+═══════════════════════════════════════════════════════════════
+

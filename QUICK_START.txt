@@ -1,0 +1,59 @@
+# ⚡ Quick Start - Kafka Setup
+
+## 3 Steps to Fix Your Error
+
+### 1️⃣ Start Kafka
+Double-click this file:
+```
+C:\Users\Zeelan\Librarian\kafka-startup.bat
+```
+**Wait until you see "Kafka is ready!"**
+
+### 2️⃣ Verify Port 9092
+Open PowerShell and run:
+```powershell
+netstat -ano | findstr ":9092"
+```
+Should see something listening on port 9092
+
+### 3️⃣ Start Your App
+```bash
+cd C:\Users\Zeelan\Librarian
+mvn spring-boot:run
+```
+
+---
+
+## What You'll See ✅
+
+**After Step 1 (Kafka starts):**
+- 2 terminal windows open (Zookeeper + Kafka)
+- Status shows broker is ready
+
+**After Step 3 (App starts):**
+- No connection errors ✓
+- Messages processed by outbox ✓
+- Application runs normally ✓
+
+---
+
+## If Something Goes Wrong
+
+| Error | Fix |
+|-------|-----|
+| Batch file won't run | Run as Administrator (right-click) |
+| Port 9092 in use | Close other Kafka instances |
+| App still can't connect | Wait 10 more seconds, restart app |
+| Java not found | Install JDK: https://adoptium.net/ |
+
+---
+
+## Config Applied ✅
+
+- Bootstrap: `localhost:9092`
+- Retries: `3`
+- Batching: `10ms`
+- Timeout: `5 seconds`
+
+All set! Your app should work now. 🚀
+
