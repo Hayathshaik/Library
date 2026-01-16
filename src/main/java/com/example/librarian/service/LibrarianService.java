@@ -152,6 +152,7 @@ public class LibrarianService {
         Map<String, Object> payload = new HashMap<>();
         payload.put("loanId", loan.getId());
         payload.put("userId", userIdNumeric);
+
         payload.put("bookId", bookId);
 
         try {

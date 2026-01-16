@@ -19,4 +19,5 @@ public class KafkaProducerService {
         // "book_events" is the topic name from your KafkaConfig
         kafkaTemplate.send("book_events", message);
     }
+
 }
