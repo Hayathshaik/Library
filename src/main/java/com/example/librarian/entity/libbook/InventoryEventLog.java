@@ -10,10 +10,10 @@ public class InventoryEventLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "event_log_id")
+    @Column(name = "event_id")
     private Long id;
 
-    @Column(name = "inventory_Id", nullable = false, length = 100)
+    @Column(name = "inventory_id", nullable = false)
     private String inventoryId;
 
 
@@ -23,7 +23,7 @@ public class InventoryEventLog {
     @Column(name = "payload", columnDefinition = "TEXT")
     private String payload;
 
-    @Column(name = "reference_id", nullable = false, length = 100)
+    @Column(name = "reference_id", nullable = false, length = 100, unique = true)
     private String referenceId;
 
 
@@ -87,4 +87,3 @@ public class InventoryEventLog {
         return createdAt;
     }
 }
-

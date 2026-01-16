@@ -2,6 +2,7 @@ com/example/librarian/repository/libbook/BookRepository.class
 com/example/librarian/service/LibrarianService.class
 com/example/librarian/exception/GlobalExceptionHandler.class
 com/example/librarian/entity/libbook/Book.class
+com/example/librarian/consumer/InventorySyncConsumer.class
 com/example/librarian/repository/libbook/LoanRepository.class
 com/example/librarian/entity/libbook/Loan.class
 com/example/librarian/entity/libbook/BookEventOutbox.class

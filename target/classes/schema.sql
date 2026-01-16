@@ -108,6 +108,7 @@ CREATE TABLE inventory_event_log (
                                      CONSTRAINT `fk_event_inventory` FOREIGN KEY (`inventory_id`) REFERENCES book_inventory (`inventory_id`)
 ) ENGINE=InnoDB;
 
+
 -- Seed Data
     INSERT IGNORE INTO books (`book_id`, `title`, `author`, `status`)
 VALUES

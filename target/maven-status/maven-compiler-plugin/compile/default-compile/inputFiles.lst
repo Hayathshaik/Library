@@ -26,5 +26,6 @@
 /mnt/c/Users/Zeelan/Librarian/src/main/java/com/example/librarian/exception/GlobalExceptionHandler.java
 /mnt/c/Users/Zeelan/Librarian/src/main/java/com/example/librarian/repository/libbook/InventoryEventLogRepository.java
 /mnt/c/Users/Zeelan/Librarian/src/main/java/com/example/librarian/controller/LibrarianController.java
+/mnt/c/Users/Zeelan/Librarian/src/main/java/com/example/librarian/consumer/InventorySyncConsumer.java
 /mnt/c/Users/Zeelan/Librarian/src/main/java/com/example/librarian/dto/ReturnRequest.java
 /mnt/c/Users/Zeelan/Librarian/src/main/java/com/example/librarian/service/KafkaProducerService.java

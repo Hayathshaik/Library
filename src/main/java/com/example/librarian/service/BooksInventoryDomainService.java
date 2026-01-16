@@ -69,17 +69,31 @@ public class BooksInventoryDomainService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Book inventory is empty");
         }
 
-        // Update quantity
-        inventory.setQuantity(request.getQuantity());
-        inventory.setStatus("ACTIVE");
-        BookInventory saved = bookInventoryRepository.save(inventory);
+        // Store previous quantity before update
+        int previousQuantity = inventory.getQuantity();
 
-        // Build event payload
-        String payload = "{\"bookId\":\"" + saved.getBookId() + "\",\"previous quantity\":" + inventory.getQuantity() + "\",\"quantity\":" + saved.getQuantity() + "}";
+        // Execute the JPA update query - returns number of rows updated (0 or 1)
+        int rowsUpdated = bookInventoryRepository.incrementBy(request.getQuantity(), request.getBookId());
+        if (rowsUpdated == 0) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to update inventory");
+        }
+
+        // Refetch the updated inventory from database
+        BookInventory updated = bookInventoryRepository.findByBookId(book.getBookId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Inventory not found after update"));
+
+        updated.setStatus("ACTIVE");
+        BookInventory saved = bookInventoryRepository.save(updated);
+
+        log.info("Inventory updated: bookId={}, previousQuantity={}, newQuantity={}, quantityAdded={}",
+                 saved.getBookId(), previousQuantity, saved.getQuantity(), request.getQuantity());
+
+        // Build event payload with correct values
+        String payload = "{\"bookId\":\"" + saved.getBookId() + "\",\"previousQuantity\":" + previousQuantity + ",\"newQuantity\":" + saved.getQuantity() + ",\"quantityAdded\":" + request.getQuantity() + "}";
 
         // Synchronous Kafka send: ensure broker acks before we log
         try {
-            kafkaTemplate.send("book_events", saved.getBookId(), payload).get();
+            kafkaTemplate.send("inventory_updates", saved.getBookId(), payload).get();
         } catch (Exception ex) {
             log.error("Kafka send failed for bookId={}", saved.getBookId(), ex);
             throw new ResponseStatusException(HttpStatus.BAD_GATEWAY, "Failed to publish inventory event to Kafka");

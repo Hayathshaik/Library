@@ -42,14 +42,16 @@ public class OutboxDispatcher {
 
         for (OutboxEvent event : events) {
             try {
+                if (event.isProcessed()) {
+                    continue;
+                }
                 // Determine topic and send to Kafka
                 String topic = "BookCheckedOut".equalsIgnoreCase(event.getEventType()) ? "book_events" : event.getEventType();
 
                 kafkaTemplate.send(topic, event.getNew_Status(), event.getPayloadJson())
                         .get(5, TimeUnit.SECONDS);
 
-                  event.setProcessed(true);
-               // event.setPublishAt(LocalDateTime.now());
+                event.setProcessed(true);
                 outboxRepository.save(event);
                 count++;
             } catch (Exception e) {
