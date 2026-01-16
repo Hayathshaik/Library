@@ -9,7 +9,9 @@ com/example/librarian/entity/libbook/BookInventory.class
 com/example/librarian/outbox/OutboxDispatcher.class
 com/example/librarian/dto/ReturnRequest.class
 com/example/librarian/entity/libdemo/User.class
+com/example/librarian/dto/UpdateInventoryRequest.class
 com/example/librarian/service/BooksInventoryDomainService.class
+com/example/librarian/entity/libbook/InventoryEventLog.class
 com/example/librarian/config/KafkaConfig.class
 com/example/librarian/dto/CheckoutResponse.class
 com/example/librarian/entity/libbook/OutboxEvent.class
@@ -21,6 +23,7 @@ com/example/librarian/repository/libbook/BookInventoryRepository.class
 com/example/librarian/dto/CheckoutRequest.class
 com/example/librarian/config/LibbookDataSourceConfig.class
 com/example/librarian/controller/LibrarianController.class
+com/example/librarian/repository/libbook/InventoryEventLogRepository.class
 com/example/librarian/controller/TestController.class
 com/example/librarian/dto/BookInventoryRequest.class
 com/example/librarian/repository/libdemo/UserRepository.class

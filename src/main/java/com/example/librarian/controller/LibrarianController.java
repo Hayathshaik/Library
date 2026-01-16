@@ -4,6 +4,7 @@ import com.example.librarian.dto.CheckoutRequest;
 import com.example.librarian.dto.ReturnRequest;
 import com.example.librarian.dto.CheckoutResponse;
 import com.example.librarian.dto.BookInventoryRequest;
+import com.example.librarian.dto.UpdateInventoryRequest;
 import com.example.librarian.entity.libbook.BookInventory;
 import com.example.librarian.service.LibrarianService;
 import com.example.librarian.service.BooksInventoryDomainService;
@@ -44,5 +45,11 @@ public class LibrarianController {
     public ResponseEntity<BookInventory> bookInventory(@Valid @RequestBody BookInventoryRequest request) {
         BookInventory bookInventory = booksInventoryDomainService.addBookInventory(request);
         return ResponseEntity.ok(bookInventory);
+    }
+
+    @PostMapping("/books/inventory/update")
+    public ResponseEntity<BookInventory> updateInventory(@Valid @RequestBody UpdateInventoryRequest request) {
+        BookInventory updated = booksInventoryDomainService.updateInventory(request);
+        return ResponseEntity.ok(updated);
     }
 }

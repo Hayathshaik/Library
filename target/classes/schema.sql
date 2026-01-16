@@ -109,7 +109,7 @@ CREATE TABLE inventory_event_log (
 ) ENGINE=InnoDB;
 
 -- Seed Data
-INSERT IGNORE INTO books (`book_id`, `title`, `author`, `status`)
+    INSERT IGNORE INTO books (`book_id`, `title`, `author`, `status`)
 VALUES
   ('b_100', '1984', 'George Orwell', 'AVAILABLE'),
   ('b_101', 'Hamlet', 'William Shakespeare', 'AVAILABLE');
