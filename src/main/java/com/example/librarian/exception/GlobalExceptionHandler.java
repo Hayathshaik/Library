@@ -20,6 +20,7 @@ public class GlobalExceptionHandler {
         body.put("status", ex.getStatusCode().value());
         body.put("message", ex.getReason());
         return new ResponseEntity<>(body, ex.getStatusCode());
+
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

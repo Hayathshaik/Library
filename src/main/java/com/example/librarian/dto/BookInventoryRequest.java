@@ -9,6 +9,7 @@ public class BookInventoryRequest {
     @NotNull(message = "Book ID cannot be null")
     private String bookId;
 
+
     @NotEmpty(message = "Title cannot be empty")
     private String title;
 

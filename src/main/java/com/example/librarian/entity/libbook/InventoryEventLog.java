@@ -27,7 +27,6 @@ public class InventoryEventLog {
     private String referenceId;
 
 
-
     @Column(name = "status", nullable = false, length = 16)
     private String status;
 

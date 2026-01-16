@@ -51,5 +51,7 @@ public class LibrarianController {
     public ResponseEntity<BookInventory> updateInventory(@Valid @RequestBody UpdateInventoryRequest request) {
         BookInventory updated = booksInventoryDomainService.updateInventory(request);
         return ResponseEntity.ok(updated);
+
     }
+
 }

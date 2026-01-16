@@ -12,5 +12,6 @@ public class ReturnRequest {
     public void setUserId(String userId) { this.userId = userId; }
     public String getBookId() { return bookId; }
     public void setBookId(String bookId) { this.bookId = bookId; }
+
 }
 

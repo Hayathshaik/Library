@@ -9,6 +9,7 @@ public class BookStatusUpdatedEvent {
     private String correlationId;
     private Long loanId;
 
+
     public static BookStatusUpdatedEvent of(String bookId, String userId, String newStatus, Long loanId, String correlationId) {
         BookStatusUpdatedEvent evt = new BookStatusUpdatedEvent();
         evt.setBookId(bookId);
@@ -17,6 +18,7 @@ public class BookStatusUpdatedEvent {
         evt.setLoanId(loanId);
         evt.setCorrelationId(correlationId);
         return evt;
+
     }
 
     public String getEventName() {

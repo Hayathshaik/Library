@@ -16,4 +16,5 @@ public interface OutboxRepository extends JpaRepository<OutboxEvent, Long> {
      * 3. OrderByCreatedAtAsc: Maps to 'createdAt' field in OutboxEvent
      */
     List<OutboxEvent> findTop100ByProcessedFalseOrderByCreatedAtAsc();
+
 }

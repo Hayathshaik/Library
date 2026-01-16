@@ -27,7 +27,6 @@ public class BooksInventoryDomainService {
     private final BookInventoryRepository bookInventoryRepository;
     private final InventoryEventLogRepository inventoryEventLogRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
-
     public BooksInventoryDomainService(BookRepository bookRepository,
                                        BookInventoryRepository bookInventoryRepository,
                                        InventoryEventLogRepository inventoryEventLogRepository,

@@ -12,6 +12,7 @@ public class BookEventOutbox {
 
     private String eventType;
 
+
     @Lob
     private String payload;
 
